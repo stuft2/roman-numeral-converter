@@ -20,7 +20,7 @@ let decimal
 /* Ensure the input is an integer */
 try {decimal = parseInt(input)} catch (_) {}
 try {
-  if (decimal != null) {
+  if (!isNaN(decimal)) {
     console.log(RomanNumeral.parse(decimal).value)
   } else {
     console.log(new RomanNumeral(input).toDecimal())
