@@ -16,9 +16,15 @@ const cli = meow(`
 })
 
 const input = cli.input.at(0)
+let decimal
+/* Ensure the input is an integer */
+try {decimal = parseInt(input)} catch (_) {}
 try {
-  const num = parseInt(input) /* Ensure the input is an integer */
-  console.log(RomanNumeral.parse(num).value)
+  if (decimal != null) {
+    console.log(RomanNumeral.parse(decimal).value)
+  } else {
+    console.log(new RomanNumeral(input).toDecimal())
+  }
 } catch (e) {
-  console.log(new RomanNumeral(input).toDecimal())
+  console.error(e.message)
 }
